@@ -10,21 +10,21 @@ const db = admin.firestore();
 
 const quoteURL = "https://finance.yahoo.com/quote"
 
-const getTopGainerStocks =  async (amt) => {
+const getTopGainerStocks = async (amt) => {
     const curr = amt / 72;
     const response = await axios.get(API.stocks);
     const data = response.data?.slice(0, 5).map((stock) => {
         return {
             ...stock,
             url: `${quoteURL}/${stock.ticker}`,
-            amount: curr / Number(stock.price)
+            amount: Number(curr / Number(stock.price)).toFixed(3)
         };
     })
     return data;
 }
 
 module.exports = {
-    getUserData : async (id) => {
+    getUserData: async (id) => {
         const userRef = db.collection('users').doc(id);
         const getUser = async () => {
             const doc = await userRef.get();
@@ -37,9 +37,8 @@ module.exports = {
         }
 
         const userData = await getUser();
-        // const {amt} = userData;
-        const amt = 300;
-        if(amt <= 0){
+        const amt = Number(userData.currentbal);
+        if (amt <= 0) {
             return NaN;
         }
         return getTopGainerStocks(amt);
