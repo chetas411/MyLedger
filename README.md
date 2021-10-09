@@ -17,3 +17,9 @@ Database => Firebase
 2. Target based savings plan feature can be added.
 3. Payment integration so that user can invest right from the application only.
 
+## Contributors
+Chetas Sharma [@chetas411](https://github.com/chetas411)
+<br>
+Lakshay Garg [@lakshaygarg128](https://github.com/lakshaygarg128)
+<br>
+Nikhil Kumar [@nikhil-2911](https://github.com/nikhil-2911)
