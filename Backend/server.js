@@ -1,18 +1,8 @@
 require('dotenv').config();
 const express = require("express");
-const axios = require("axios");
 const cors = require("cors");
-const API  = require("./api");
-const admin = require("firebase-admin")
 const app = express();
-
-const serviceAccount = require("./serviceAccount.json");
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
-
-const db = admin.firestore();
+const {getUserData} = require('./methods')
 
 const PORT = process.env.PORT || 5000;
 
@@ -23,8 +13,12 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-// console.log(API.stocks);
-
-console.log(db);
+app.get("/investments", async (req,res) => {
+    const userID = req.query.id;
+    // console.log(userID);
+    const data = await getUserData(userID);
+    console.log(data);
+    res.send(data);
+});
 
 app.listen(PORT, () => console.log("Server is running..."));
