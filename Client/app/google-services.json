@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535718298716",
+    "project_id": "myledger-6e4a1",
+    "storage_bucket": "myledger-6e4a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535718298716:android:56b5f046af4a68da1d5299",
+        "android_client_info": {
+          "package_name": "com.example.myledger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535718298716-12les27a78n46ls64jkkqj05kt2lb14t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaOtIFotAUbRoAIo21k7uN3hPOWjrssj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535718298716-12les27a78n46ls64jkkqj05kt2lb14t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
