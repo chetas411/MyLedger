@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Myledger">
-        <activity android:name=".inputscreen.Expense_Details"></activity>
+        <activity android:name=".Stocks"></activity>
+        <activity
+            android:name=".Dashboard"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/Theme.Myledger.NoActionBar" />
+        <activity android:name=".inputscreen.Expense_Details" />
         <activity android:name=".SignGoogle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

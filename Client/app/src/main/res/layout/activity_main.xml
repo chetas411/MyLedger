@@ -6,13 +6,94 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+
+    <EditText
+        android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:ems="10"
+        android:hint="Enter the value"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456" />
+
+    <TextView
+        android:id="@+id/textviewlist"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:text="Add expense/earning"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@id/textviewlist"
+        tools:layout_editor_absoluteY="210dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        >
+        <RadioButton
+            android:id="@+id/spent_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spent"
+            android:textSize="24sp"
+
+            />
+        <RadioButton
+            android:id="@+id/earned_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earned"
+            android:textSize="24sp"
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_add_tran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Transaction"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber"
+        app:layout_constraintVertical_bias="0.85" />
+
+    <EditText
+        android:id="@+id/Message_reason"
+        android:layout_width="270dp"
+        android:layout_height="122dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="Reason of Transaction"
+        android:textColorHint="@color/white"
+        android:gravity="top"
+        android:background="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

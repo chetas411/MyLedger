@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.myledger.Dao.userdao
+import com.example.myledger.Dashboard
 import com.example.myledger.MainActivity
 import com.example.myledger.R
 import com.google.firebase.auth.ktx.auth
@@ -26,7 +27,7 @@ class Expense_Details : AppCompatActivity() {
             val user = Firebase.auth.currentUser
             val userdao = userdao()
             userdao.setdailylimit(user!!.uid,daily.toString())
-            val mainactivityintent = Intent(this, MainActivity::class.java)
+            val mainactivityintent = Intent(this, Dashboard::class.java)
             Toast.makeText(this,"Limit Added",Toast.LENGTH_LONG).show()
             startActivity(mainactivityintent)
             finish()

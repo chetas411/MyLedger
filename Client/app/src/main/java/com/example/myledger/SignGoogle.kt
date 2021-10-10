@@ -1,6 +1,5 @@
 package com.example.myledger
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myledger.Dao.userdao
 import com.example.myledger.inputscreen.Expense_Details
+import com.example.myledger.models.ExpenseDetails
+import com.example.myledger.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -21,10 +22,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SignGoogle : AppCompatActivity() {
 
@@ -105,8 +102,14 @@ class SignGoogle : AppCompatActivity() {
     private fun UpdateUI(firebaseUser: FirebaseUser?) {
         if(firebaseUser!=null)
         {
+            val list_of_exp : List<ExpenseDetails> = listOf()
+            val user = User(firebaseUser.uid,
+                firebaseUser.displayName.toString(),
+                firebaseUser.photoUrl.toString(),
+                "0",
+                "0",
+                list_of_exp)
 
-            val user = User(firebaseUser.uid,firebaseUser.displayName.toString(),firebaseUser.photoUrl.toString(),"")
             val dao = userdao()
             Toast.makeText(this,"done",Toast.LENGTH_LONG).show()
             dao.addUser(user)
@@ -120,5 +123,11 @@ class SignGoogle : AppCompatActivity() {
             signinbutton.visibility = View.VISIBLE
 
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        var auth = Firebase.auth.currentUser
+        UpdateUI(auth)
     }
 }
