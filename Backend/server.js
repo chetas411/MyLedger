@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { getUserData } = require('./methods')
+const { getUserStocksData, getUserData } = require('./methods')
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.get("/investments", async (req, res) => {
     const userID = req.query.id;
-    const data = await getUserData(userID);
+    const data = await getUserStocksData(userID);
     console.log(data);
     if (Number.isNaN(data)) {
         res.send({
@@ -24,5 +24,11 @@ app.get("/investments", async (req, res) => {
     }
     res.send(data)
 });
+
+app.get("/user", async (req, res) => {
+    const userID = req.query.id;
+    const user = await getUserData(userID);
+    res.send(user);
+})
 
 app.listen(PORT, () => console.log("Server is running..."));

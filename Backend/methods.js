@@ -23,25 +23,32 @@ const getTopGainerStocks = async (amt) => {
     return data;
 }
 
-module.exports = {
-    getUserData: async (id) => {
-        const userRef = db.collection('users').doc(id);
-        const getUser = async () => {
-            const doc = await userRef.get();
-            if (!doc.exists) {
-                console.log('No such user!');
-                return NaN;
-            } else {
-                return doc.data();
-            }
+const getUserFromDB = async (id) => {
+    const userRef = db.collection('users').doc(id);
+    const getUser = async () => {
+        const doc = await userRef.get();
+        if (!doc.exists) {
+            console.log('No such user!');
+            return NaN;
+        } else {
+            return doc.data();
         }
+    }
 
-        const userData = await getUser();
+    const userData = await getUser();
+    return userData;
+}
+
+module.exports = {
+    getUserStocksData: async (id) => {
+        const userData = await getUserFromDB(id);
         const amt = Number(userData.currentbal);
         if (amt <= 0) {
             return NaN;
         }
         return getTopGainerStocks(amt);
-    }
+    },
+
+    getUserData: getUserFromDB
 
 };
