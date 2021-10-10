@@ -8,7 +8,7 @@ With growing awareness among the youth about managing their finances and start i
 ## Tech Stack
 Frontend Android Application => Kotlin, XML
 <br>
-Backend API => Node.js
+Backend Server => Node.js
 <br>
 Database => Firebase
 
